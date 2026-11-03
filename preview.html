@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Local live preview of the Kasuwa Moto marketplace website.">
+  <title>Kasuwa Moto - Live Preview</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body { width: 100%; height: 100%; margin: 0; }
+
+    body {
+      display: grid;
+      grid-template-rows: 36px minmax(0, 1fr);
+      overflow: hidden;
+      background: #080b12;
+      color: #e8eef8;
+      font: 12px/1.2 "Bahnschrift", "Arial Narrow", system-ui, sans-serif;
+    }
+
+    .preview-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 14px;
+      border-bottom: 1px solid #202a3b;
+      background: #080b12;
+    }
+
+    .preview-title { color: #8bb8ff; font-weight: 700; letter-spacing: .04em; }
+    .preview-status, .video-status { color: #91a0b5; }
+    .crossfade-button {
+      padding: 6px 10px;
+      border: 1px solid #3985ff;
+      border-radius: 3px 10px 3px 10px;
+      background: #101d30;
+      color: #cfe0ff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .crossfade-button:hover { background: #1c5fc4; }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #080b12;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-bar">
+    <span class="preview-title">KASUWA MOTO · LIVE PREVIEW</span>
+    <span class="preview-status" id="preview-status" role="status">Connecting…</span>
+    <span class="video-status" id="video-status" role="status">Checking videos...</span>
+    <button class="crossfade-button" id="test-crossfade" type="button">Test crossfade</button>
+  </div>
+  <iframe id="site-preview" src="marketplace.html" title="Kasuwa Moto live preview" allow="autoplay"></iframe>
+
+  <script>
+    const previewFrame = document.getElementById("site-preview");
+    const previewStatus = document.getElementById("preview-status");
+    const videoStatus = document.getElementById("video-status");
+    const crossfadeButton = document.getElementById("test-crossfade");
+    let lastVersion = "";
+    let checking = false;
+
+    function updateVideoStatus() {
+      try {
+        const pageWindow = previewFrame.contentWindow;
+        const pageDocument = previewFrame.contentDocument;
+        const videos = [...pageDocument.querySelectorAll(".background-video")];
+        if (videos.length !== 2) {
+          videoStatus.textContent = "Waiting for both video clips";
+          return;
+        }
+
+        if (pageWindow.matchMedia("(prefers-reduced-motion: reduce)").matches && pageDocument.documentElement.classList.contains("static-background")) {
+          videoStatus.textContent = "Reduced motion pauses the video. Use Play background video anyway in the page to override.";
+          return;
+        }
+
+        const failedIndex = videos.findIndex(video => video.error);
+        if (failedIndex >= 0) {
+          videoStatus.textContent = `Clip ${failedIndex + 1} failed to load (media error ${videos[failedIndex].error.code})`;
+          return;
+        }
+
+        const readyCount = videos.filter(video => video.readyState >= 1).length;
+        if (readyCount < 2) {
+          videoStatus.textContent = `Loading video clips (${readyCount}/2 ready)`;
+          return;
+        }
+
+        const activeIndex = videos.findIndex(video => video.classList.contains("is-active"));
+        if (activeIndex < 0) {
+          videoStatus.textContent = "No active background clip";
+          return;
+        }
+        const activeVideo = videos[activeIndex];
+        const resolution = `${activeVideo.videoWidth}x${activeVideo.videoHeight}`;
+        const secondsLeft = Math.max(0, Math.ceil(activeVideo.duration - activeVideo.currentTime));
+        const timeLeft = `${Math.floor(secondsLeft / 60)}:${String(secondsLeft % 60).padStart(2, "0")}`;
+        videoStatus.textContent = `Clip ${activeIndex + 1} (${resolution}) ${activeVideo.paused ? "paused" : "playing"} | fades in ${timeLeft}`;
+      } catch {
+        videoStatus.textContent = "Video status unavailable";
+      }
+    }
+
+    async function checkForSavedChanges() {
+      if (checking) return;
+      checking = true;
+
+      try {
+        const response = await fetch(`marketplace.html?preview-check=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("Preview server is unavailable");
+
+        const version = await response.text();
+        if (lastVersion && version !== lastVersion) {
+          previewStatus.textContent = "Changes saved · refreshing preview";
+          previewFrame.src = `marketplace.html?preview=${Date.now()}`;
+        } else if (!lastVersion) {
+          previewStatus.textContent = "Watching for saved changes";
+        }
+        lastVersion = version;
+      } catch {
+        previewStatus.textContent = "Start the local preview server to connect";
+      } finally {
+        checking = false;
+      }
+    }
+
+    crossfadeButton.addEventListener("click", () => {
+      try {
+        const pageWindow = previewFrame.contentWindow;
+        const videos = [...pageWindow.document.querySelectorAll(".background-video")];
+        const activeIndex = videos.findIndex(video => video.classList.contains("is-active"));
+        if (pageWindow.document.documentElement.classList.contains("static-background") || activeIndex < 0 || typeof pageWindow.switchVideo !== "function") {
+          throw new Error("The marketplace preview is still loading");
+        }
+        pageWindow.switchVideo(activeIndex);
+        videoStatus.textContent = `Crossfading to clip ${((activeIndex + 1) % videos.length) + 1}...`;
+      } catch {
+        const pageDocument = previewFrame.contentDocument;
+        videoStatus.textContent = pageDocument && pageDocument.documentElement.classList.contains("static-background")
+          ? "Reduced motion is enabled. Use Play background video anyway in the page to override."
+          : "Wait for the preview and both clips to load first";
+      }
+    });
+
+    previewFrame.addEventListener("load", updateVideoStatus);
+    checkForSavedChanges();
+    window.setInterval(checkForSavedChanges, 800);
+    window.setInterval(updateVideoStatus, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070706">
+  <meta name="description" content="Manage the Kasuwa Moto marketplace catalogue.">
+  <title>Owner Workspace | Kasuwa Moto</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    :root{color-scheme:dark;--ink:#f8f4e8;--muted:#c9bea2;--line:#514523;--gold:#dcb64b;--gold-light:#f1cf73}
+    *{box-sizing:border-box}body{position:relative;isolation:isolate;max-width:100%;min-height:100vh;margin:0;overflow-x:clip;background:#080807;color:var(--ink);font:16px/1.6 "Bahnschrift","Arial Narrow",Arial,Helvetica,sans-serif}
+    body:before{display:none}
+    a{color:var(--gold-light);text-underline-offset:3px}button,input,select,textarea{font:inherit}button{cursor:pointer}
+    :focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+    header{border-bottom:1px solid var(--line);background:#090908}
+    .header-inner,main{width:min(850px,calc(100% - 36px));margin-inline:auto}
+    .header-inner{display:flex;min-height:68px;align-items:center;justify-content:space-between;gap:16px}
+    .brand{color:#f8f4e8;font:900 22px "Bahnschrift","Arial Narrow","Roboto Condensed",Impact,sans-serif;letter-spacing:.05em;text-decoration:none;text-transform:uppercase}
+    main{padding:35px 0 70px}h1,h2,h3{font-family:"Bahnschrift","Arial Narrow","Roboto Condensed",Impact,sans-serif;font-stretch:condensed;line-height:1.15;text-transform:uppercase}
+    h1{margin:0;font-size:clamp(34px,7vw,52px)}h2{margin:0 0 15px;font-size:25px}p{color:var(--muted)}
+    .intro{max-width:710px;margin:9px 0 22px}
+    .notice{margin:20px 0;padding:16px 18px;border-left:4px solid var(--gold);background:#141109;color:#eee5cf}
+    .notice strong{color:#fff}.steps{margin:12px 0 0;padding-left:23px}.steps li{margin:5px 0}
+    .editor-section{margin-top:25px;padding:22px;border:1px solid var(--line);background:#10100d}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .field{display:grid;gap:6px;min-width:0}.field-wide{grid-column:1/-1}.field label{font-size:13px;font-weight:750}
+    input,select,textarea{width:100%;min-height:44px;padding:10px 12px;border:1px solid #776335;border-radius:0;background:#090907;color:#fff}
+    textarea{min-height:100px;resize:vertical}input[type=file]{height:auto;min-height:0;padding:10px}
+    .help{margin:0;font-size:12px;line-height:1.5}
+    .primary,.secondary,.remove{min-height:44px;padding:9px 14px;border:1px solid var(--gold-light);border-radius:0;background:#a17a24;color:#100f08;font-weight:800}
+    .primary:hover,.secondary:hover{background:#d0a53b}.secondary{background:#17140b;color:var(--gold-light)}.remove{min-height:38px;background:#2a2110;color:#f1d98e;font-size:12px}
+    .form-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .message{margin:14px 0 0;padding:11px 13px;border-left:3px solid var(--gold);background:#1d190e;color:#f0e2bd}
+    .message.error{border-left-color:var(--gold-light);background:#2a2110;color:#f5df9d}.message[hidden]{display:none}
+    .catalog-list{display:grid;gap:10px;margin:16px 0 0;padding:0;list-style:none}
+    .catalog-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:13px;border:1px solid #514523;background:#0d0c08}
+    .catalog-item strong,.catalog-item span{display:block;overflow-wrap:anywhere}.catalog-item span{color:var(--muted);font-size:13px}
+    .empty{padding:16px;border:1px dashed #9b8243;color:#f0e7d0}
+    .footer-note{margin-top:25px;font-size:13px}
+    @media(max-width:560px){.header-inner,main{width:calc(100% - 28px)}main{padding-top:24px}.editor-section{padding:16px}.form-grid{grid-template-columns:1fr}.field-wide{grid-column:auto}.catalog-item{grid-template-columns:1fr}.form-actions>*{width:100%}}
+    :root{color-scheme:dark;--page:#070706;--sidebar:#0b0b09;--panel:#10100d;--raised:#17160f;--ink:#f3eedf;--muted:#aaa38e;--line:#37301d;--gold:#caa43c;--gold-light:#ead078;--gold-ink:#110f08;--danger:#4d211c}
+    body{background:var(--page);color:var(--ink);font-size:15px;overflow-x:hidden}
+    body:before{display:none}
+    header.topbar{position:relative;z-index:2;border-color:var(--line);background:#090908}
+    .header-inner{width:auto;min-height:72px;margin:0;padding:0 clamp(18px,3vw,42px)}
+    .brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink);font:900 20px/1 "Bahnschrift","Arial Narrow",Impact,sans-serif;letter-spacing:.075em}
+    .brand-mark{display:grid;width:35px;height:35px;place-items:center;border:1px solid var(--gold);color:var(--gold-light);font-size:11px;letter-spacing:.02em}
+    .brand small{display:block;margin-top:5px;color:var(--muted);font:700 9px/1 Arial,sans-serif;letter-spacing:.2em}
+    .header-actions{display:flex;align-items:center;gap:20px}.owner-tag{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .storefront-link{display:inline-flex;min-height:40px;align-items:center;gap:9px;padding:0 13px;border:1px solid var(--line);background:var(--panel);font-size:12px;font-weight:750;text-decoration:none}
+    .owner-shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 72px)}
+    .sidebar{position:sticky;top:0;display:flex;height:100vh;min-height:540px;flex-direction:column;padding:30px 18px 20px;border-right:1px solid var(--line);background:var(--sidebar)}
+    .sidebar-title{display:grid;gap:6px;margin:0 0 28px;padding:0 12px}.sidebar-title span{color:var(--muted);font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.sidebar-title strong{font:800 21px/1.1 "Bahnschrift","Arial Narrow",Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+    .side-nav{display:grid;gap:5px}.side-nav a{display:flex;min-height:46px;align-items:center;gap:12px;padding:0 12px;border-left:2px solid var(--sidebar);color:#c3bcaa;font-size:13px;font-weight:700;text-decoration:none}.side-nav a:hover,.side-nav a[aria-current=page]{border-left-color:var(--gold);background:#17160f;color:var(--gold-light)}.nav-mark{width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg)}
+    .sidebar-note{margin-top:auto;padding:16px 12px;border-top:1px solid var(--line)}.sidebar-note strong{display:block;color:var(--gold-light);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.sidebar-note span{display:block;margin-top:5px;color:var(--muted);font-size:11px}
+    main.workspace{width:100%;max-width:1500px;margin:0 auto;padding:38px clamp(20px,4vw,58px) 72px}
+    .page-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:25px}.eyebrow,.section-kicker{margin:0 0 9px;color:var(--gold);font-size:10px;font-weight:850;letter-spacing:.19em;text-transform:uppercase}
+    h1,h2,h3{font-family:"Bahnschrift","Arial Narrow",Impact,sans-serif;line-height:1.12;text-transform:uppercase}h1{margin:0;font-size:clamp(34px,5vw,54px);letter-spacing:.015em}h2{margin:0;font-size:23px;letter-spacing:.025em}p{color:var(--muted)}.intro{max-width:670px;margin:10px 0 0;font-size:14px}
+    .primary,.secondary,.remove{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:0 16px;border:1px solid var(--gold);border-radius:0;background:var(--gold);color:var(--gold-ink);font-size:12px;font-weight:850;letter-spacing:.045em;text-decoration:none;text-transform:uppercase}.primary:hover{background:var(--gold-light)}.secondary{background:#14130e;color:var(--gold-light)}.secondary:hover{background:#211e14}.remove{min-height:36px;padding:0 12px;border-color:#734039;background:var(--danger);color:#f0cbc3;font-size:10px}.remove:hover{background:#672b24}
+    .summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}.summary-card{min-height:132px;padding:17px 18px;border:1px solid var(--line);background:var(--panel)}.summary-label{display:block;color:var(--muted);font-size:9px;font-weight:850;letter-spacing:.15em;text-transform:uppercase}.summary-value{display:block;margin:11px 0 2px;color:var(--ink);font:800 29px/1 "Bahnschrift","Arial Narrow",Impact,sans-serif}.summary-value.count{color:var(--gold-light);font-size:36px}.summary-note{display:block;color:var(--muted);font-size:11px}.status-value{display:flex;align-items:center;gap:8px;margin:14px 0 8px;color:var(--gold-light);font-size:13px;font-weight:800}.status-dot{width:7px;height:7px;background:var(--gold)}.summary-card a{display:inline-block;margin-top:9px;font-size:11px;font-weight:800}
+    .workflow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;margin:0 0 22px;padding:19px 20px;border:1px solid var(--line);background:#0c0c0a}.workflow-index{display:grid;width:34px;height:34px;place-items:center;border:1px solid var(--gold);color:var(--gold-light);font-size:11px;font-weight:850}.workflow h2{margin:0 0 4px;font-size:14px}.workflow p{margin:0;font-size:12px}.workflow>a{font-size:11px;font-weight:800;white-space:nowrap}
+    .editor-layout{display:grid;grid-template-columns:minmax(320px,.88fr) minmax(0,1.12fr);align-items:start;gap:16px}.editor-section{min-width:0;margin:0;padding:22px;border:1px solid var(--line);background:var(--panel)}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:19px}.section-head p{margin:6px 0 0;font-size:12px}.section-kicker{display:block;margin:0 0 6px;font-size:9px}.entry-count{flex:none;padding:6px 9px;border:1px solid var(--line);background:#0a0a08;color:var(--gold-light);font-size:10px;font-weight:800}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:grid;gap:6px;min-width:0}.field-wide{grid-column:1/-1}.field label{color:#e6dfce;font-size:12px;font-weight:750}.field .help{margin:1px 0 0;color:var(--muted);font-size:10px;line-height:1.5}
+    input,select,textarea{width:100%;min-height:44px;padding:10px 12px;border:1px solid #39331f;border-radius:0;background:#090908;color:#f6f2e8}input::placeholder,textarea::placeholder{color:#797361}input:focus,select:focus,textarea:focus{border-color:var(--gold)}textarea{min-height:106px;resize:vertical}input[type=file]{height:auto;min-height:0;padding:10px;font-size:11px}input[type=file]::file-selector-button{margin-right:12px;padding:8px 10px;border:1px solid var(--line);background:#19180f;color:var(--gold-light);font:700 10px Arial,sans-serif}
+    .field-label{color:#e6dfce;font-size:12px;font-weight:750}.photo-upload{position:relative;display:grid;min-height:142px;place-content:center;justify-items:center;gap:8px;border:1px dashed #625126;background:#0a0a08;color:var(--ink);cursor:pointer;text-align:center}.photo-upload:hover{border-color:var(--gold-light);background:#10100c}.photo-upload:focus-within{outline:3px solid var(--gold-light);outline-offset:3px}.upload-plus{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--gold);background:#17150e;color:var(--gold-light);font:400 29px/1 Arial,sans-serif}.upload-copy{display:grid;gap:3px;max-width:100%;padding:0 14px}.upload-copy strong{overflow:hidden;color:var(--gold-light);font-size:12px;text-overflow:ellipsis;white-space:nowrap}.upload-copy small{color:var(--muted);font-size:10px}.photo-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+    .help{margin:0;font-size:11px;line-height:1.5}.form-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}.form-actions>*{min-height:42px}.message{margin:13px 0 0;padding:11px 13px;border-left:3px solid var(--gold);background:#1b190f;color:#e9dfc6;font-size:12px}.message.error{border-left-color:#aa5c4c;background:#271714;color:#f0cbc3}.message[hidden]{display:none}.catalog-status{margin:0;font-size:11px}.catalog-status.message{padding:10px 12px}
+    .catalog-list{display:grid;gap:9px;margin:15px 0 0;padding:0;list-style:none}.catalog-item{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:13px;min-width:0;padding:11px;border:1px solid #302b1c;background:#0b0b09}.item-photo{display:grid;width:64px;height:64px;place-items:center;overflow:hidden;border:1px solid #302b1c;background:#14130f;color:#797361;font-size:8px;font-weight:800;letter-spacing:.08em;text-align:center}.item-photo img{width:100%;height:100%;object-fit:cover}.item-copy{min-width:0}.item-topline{display:flex;flex-wrap:wrap;align-items:center;gap:7px}.item-copy strong{display:block;overflow-wrap:anywhere;color:var(--ink);font-size:13px}.item-category{color:var(--gold-light);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.item-price{display:block;margin-top:4px;color:#e0d8c5;font-size:11px;font-weight:750}.item-description{display:block;margin-top:4px;color:var(--muted);font-size:10px;overflow-wrap:anywhere}.empty{padding:22px 16px;border:1px dashed #51472d;background:#0b0b09;color:#c7bea7;font-size:12px;text-align:center}.footer-note{margin:28px 0 0;color:var(--muted);font-size:11px}.footer-note a{color:var(--gold-light)}
+    @media(max-width:1100px){.owner-shell{grid-template-columns:190px minmax(0,1fr)}main.workspace{padding-inline:26px}.editor-layout{grid-template-columns:1fr}.editor-section{padding:20px}}
+    @media(max-width:760px){.header-inner{min-height:64px}.owner-shell{display:block}.sidebar{position:static;display:block;width:100%;height:auto;min-height:0;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line)}.sidebar-title,.sidebar-note{display:none}.side-nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.side-nav a{justify-content:center;min-height:38px;padding:0 6px;border:0;border-bottom:2px solid var(--sidebar);font-size:10px;text-align:center}.side-nav a:hover,.side-nav a[aria-current=page]{border-bottom-color:var(--gold)}.nav-mark{display:none}main.workspace{padding:27px 20px 54px}.summary-grid{gap:8px}.summary-card{min-height:115px;padding:14px}.workflow{grid-template-columns:auto minmax(0,1fr);gap:12px}.workflow>a{grid-column:2}.owner-tag{display:none}}
+    @media(max-width:560px){.header-inner{width:auto;margin:0;padding:0 14px}.brand{font-size:16px;gap:8px}.brand-mark{width:31px;height:31px}.storefront-link{min-height:36px;padding:0 9px;font-size:10px}.header-actions{gap:0}main.workspace{width:100%;padding:24px 14px 42px}.page-intro{align-items:flex-start;flex-direction:column;gap:16px;margin-bottom:18px}.page-intro>.primary{width:100%}.summary-grid{grid-template-columns:1fr 1fr}.summary-card{min-height:106px;padding:12px}.summary-card:last-child{grid-column:1/-1;min-height:91px}.summary-value{font-size:23px}.summary-value.count{font-size:31px}.editor-section{padding:16px}.form-grid{grid-template-columns:1fr;gap:12px}.field-wide{grid-column:auto}.catalog-item{grid-template-columns:48px minmax(0,1fr);gap:10px}.item-photo{width:48px;height:48px}.catalog-item .remove{grid-column:2;justify-self:start}.form-actions>*{width:100%}.workflow{padding:14px}.section-head{gap:8px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="header-inner">
+      <a class="brand" href="marketplace.html" aria-label="Kasuwa Moto owner workspace home"><span class="brand-mark" aria-hidden="true">KM</span><span>Kasuwa Moto<small>OWNER WORKSPACE</small></span></a>
+      <div class="header-actions"><span class="owner-tag">Catalogue management</span><a class="storefront-link" href="marketplace.html">Open storefront <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <div class="owner-shell">
+    <aside class="sidebar" aria-label="Owner workspace navigation">
+      <div class="sidebar-title"><span>Workspace</span><strong>Catalogue</strong></div>
+      <nav class="side-nav" aria-label="Catalogue sections">
+        <a href="#overview" aria-current="page"><span class="nav-mark" aria-hidden="true"></span>Overview</a>
+        <a href="#add-title"><span class="nav-mark" aria-hidden="true"></span>Add listing</a>
+        <a href="#catalog-title"><span class="nav-mark" aria-hidden="true"></span>Inventory</a>
+        <a href="#publish-info"><span class="nav-mark" aria-hidden="true"></span>Publishing</a>
+      </nav>
+      <div class="sidebar-note"><strong>Private owner area</strong><span>Catalogue tools for Kasuwa Moto</span></div>
+    </aside>
+    <main class="workspace" id="overview">
+      <section class="page-intro" aria-labelledby="page-title">
+        <div><p class="eyebrow">Owner workspace / catalogue</p><h1 id="page-title">Manage inventory</h1><p class="intro">Add goods and services to the live marketplace. Saved listings appear on the public storefront.</p></div>
+        <a class="primary" href="#add-title">Add a listing <span aria-hidden="true">+</span></a>
+      </section>
+      <section class="summary-grid" aria-label="Catalogue overview">
+        <article class="summary-card"><span class="summary-label">Catalogue items</span><strong class="summary-value count" id="item-count">0</strong><span class="summary-note">Published listings</span></article>
+        <article class="summary-card"><span class="summary-label">Catalogue status</span><strong class="status-value"><span class="status-dot" aria-hidden="true"></span><span id="draft-state">Loading catalogue</span></strong><span class="summary-note" id="draft-note">Connecting to live inventory.</span></article>
+        <article class="summary-card"><span class="summary-label">Storefront</span><strong class="summary-value">Public view</strong><span class="summary-note"><a href="marketplace.html">Open the customer homepage</a></span></article>
+      </section>
+      <section class="workflow" id="publish-info" aria-labelledby="publish-title">
+        <span class="workflow-index" aria-hidden="true">01</span>
+        <div><h2 id="publish-title">Live catalogue</h2><p>New listings and removals are saved to the shared catalogue and appear on the storefront. Catalogue details and photos are public, so do not include private information.</p></div>
+        <a href="#catalog-title">Review catalogue ↓</a>
+      </section>
+      <div class="editor-layout">
+
+        <section class="editor-section" aria-labelledby="add-title">
+          <div class="section-head"><div><span class="section-kicker">New inventory</span><h2 id="add-title">Add a listing</h2><p>Enter the item details shown to visitors.</p></div></div>
+      <form id="listing-form">
+        <div class="form-grid">
+              <div class="field field-wide"><label for="item-name">Listing name</label><input id="item-name" name="name" required maxlength="90" autocomplete="off"></div>
+          <div class="field"><label for="item-category">Category</label><select id="item-category" name="category" required>
+            <option value="">Choose a category</option><option>Motorcycles</option><option>Parts</option><option>Riding gear</option><option>Repair service</option><option>Rider learning</option>
+          </select></div>
+              <div class="field"><label for="item-price">Price in Nigerian naira</label><input id="item-price" name="price" type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" required></div>
+              <div class="field field-wide"><label for="item-description">Description</label><textarea id="item-description" name="description" required maxlength="500"></textarea></div>
+              <div class="field field-wide"><span class="field-label">Bike or item photo</span><label class="photo-upload" for="item-image"><span class="upload-plus" aria-hidden="true">+</span><span class="upload-copy"><strong id="photo-upload-title">Select a photo</strong><small id="photo-upload-filename">JPG, PNG, or WebP</small></span><input class="photo-input" id="item-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="photo-help photo-selection"></label><p class="help" id="photo-help">Choose a clear photo. Motorcycle listings require one; photos are compressed before upload.</p><p class="help" id="photo-selection" role="status" aria-live="polite">No photo selected.</p></div>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit">Publish listing</button></div>
+        <p class="message" id="success-message" role="status" aria-live="polite" hidden></p>
+        <p class="message error" id="error-message" role="alert" hidden></p>
+      </form>
+    </section>
+
+        <section class="editor-section" aria-labelledby="catalog-title">
+          <div class="section-head"><div><span class="section-kicker">Catalogue records</span><h2 id="catalog-title">Inventory</h2><p id="catalog-status" class="catalog-status" role="status" aria-live="polite">Loading live catalogue.</p></div><span class="entry-count" id="inventory-count">0 ITEMS</span></div>
+          <p id="catalog-empty" class="empty" hidden>No listings yet. Add your first item using the form.</p>
+          <ul id="catalog-list" class="catalog-list" aria-label="Goods and services in the catalogue"></ul>
+      <div class="form-actions">
+        <button class="secondary" id="download-button" type="button">Download catalogue backup</button>
+      </div>
+        </section>
+      </div>
+      <p class="footer-note"><a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+    </main>
+  </div>
+  <script>
+    const categories = new Set(["Motorcycles", "Parts", "Riding gear", "Repair service", "Rider learning"]);
+    const form = document.getElementById("listing-form");
+    const categoryInput = document.getElementById("item-category");
+    const photoInput = document.getElementById("item-image");
+    const photoHelp = document.getElementById("photo-help");
+    const photoUploadTitle = document.getElementById("photo-upload-title");
+    const photoUploadFilename = document.getElementById("photo-upload-filename");
+    const photoSelection = document.getElementById("photo-selection");
+    const formSuccess = document.getElementById("success-message");
+    const formError = document.getElementById("error-message");
+    const catalogStatus = document.getElementById("catalog-status");
+    const catalogList = document.getElementById("catalog-list");
+    const catalogEmpty = document.getElementById("catalog-empty");
+    const itemCount = document.getElementById("item-count");
+    const inventoryCount = document.getElementById("inventory-count");
+    const draftState = document.getElementById("draft-state");
+    const draftNote = document.getElementById("draft-note");
+    document.querySelectorAll(".side-nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.querySelector('.side-nav a[aria-current="page"]')?.removeAttribute("aria-current");
+        link.setAttribute("aria-current", "page");
+      });
+    });
+    function updatePhotoRequirement() {
+      const isMotorcycle = categoryInput.value === "Motorcycles";
+      photoHelp.textContent = isMotorcycle
+        ? "Add a clear motorcycle photo. It is required and compressed before upload."
+        : "Add a clear item or service photo if available. Photos are compressed before upload.";
+    }
+    function updatePhotoSelection() {
+      const file = photoInput.files[0];
+      photoUploadTitle.textContent = file ? "Photo selected" : "Select a photo";
+      photoUploadFilename.textContent = file ? file.name : "JPG, PNG, or WebP";
+      photoSelection.textContent = file ? "Selected: " + file.name : "No photo selected.";
+    }
+    categoryInput.addEventListener("change", updatePhotoRequirement);
+    photoInput.addEventListener("change", updatePhotoSelection);
+    updatePhotoRequirement();
+    const money = new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN", maximumFractionDigits: 0 });
+    let listings = [];
+
+    function isCatalogueImage(value) {
+      if (typeof value !== "string" || !value) return false;
+      if (/^data:image\/(?:webp|jpeg);base64,/.test(value)) return true;
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" && url.hostname.endsWith(".public.blob.vercel-storage.com");
+      } catch {
+        return false;
+      }
+    }
+
+    function isListing(item) {
+      return item && typeof item.id === "string" && item.id.length <= 100 &&
+        typeof item.name === "string" && item.name.trim().length > 0 && item.name.length <= 90 &&
+        categories.has(item.category) && Number.isSafeInteger(item.price) && item.price > 0 &&
+        typeof item.description === "string" && item.description.trim().length > 0 && item.description.length <= 500 &&
+        (!item.image || isCatalogueImage(item.image));
+    }
+
+    function setMessage(element, message) {
+      element.textContent = message;
+      element.hidden = !message;
+    }
+
+    function updateDraftOverview(state, note) {
+      itemCount.textContent = listings.length.toLocaleString("en-NG");
+      inventoryCount.textContent = listings.length + (listings.length === 1 ? " ITEM" : " ITEMS");
+      if (state) draftState.textContent = state;
+      if (note) draftNote.textContent = note;
+    }
+
+    function renderCatalog() {
+      catalogList.replaceChildren();
+      catalogEmpty.hidden = listings.length > 0;
+      updateDraftOverview();
+      listings.forEach(item => {
+        const row = document.createElement("li");
+        row.className = "catalog-item";
+        const photo = document.createElement("div");
+        photo.className = "item-photo";
+        if (item.image) {
+          const image = document.createElement("img");
+          image.src = item.image;
+          image.alt = "Photo of " + item.name;
+          image.loading = "lazy";
+          photo.replaceChildren(image);
+        } else {
+          photo.textContent = "NO PHOTO";
+          photo.setAttribute("aria-label", "No photo added");
+        }
+        const details = document.createElement("div");
+        details.className = "item-copy";
+        const name = document.createElement("strong");
+        name.textContent = item.name;
+        const category = document.createElement("span");
+        category.className = "item-category";
+        category.textContent = item.category;
+        const title = document.createElement("div");
+        title.className = "item-topline";
+        title.append(name, category);
+        const price = document.createElement("span");
+        price.className = "item-price";
+        price.textContent = money.format(item.price);
+        const description = document.createElement("span");
+        description.className = "item-description";
+        description.textContent = item.description;
+        details.append(title, price, description);
+        const remove = document.createElement("button");
+        remove.className = "remove";
+        remove.type = "button";
+        remove.textContent = "Remove listing";
+        remove.setAttribute("aria-label", "Remove " + item.name + " from the live catalogue");
+        remove.addEventListener("click", async () => {
+          if (!window.confirm("Remove " + item.name + " from the public catalogue?")) return;
+          remove.disabled = true;
+          catalogStatus.classList.remove("message", "error");
+          catalogStatus.textContent = "Removing listing...";
+          try {
+            const response = await fetch("/manage?api=listings&id=" + encodeURIComponent(item.id), {
+              method: "DELETE",
+              cache: "no-store",
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) throw new Error(result.error || "The listing could not be removed.");
+            listings = listings.filter(listing => listing.id !== item.id);
+            renderCatalog();
+            catalogStatus.textContent = "Listing removed from the public catalogue.";
+            updateDraftOverview("Live catalogue", "Changes are saved automatically.");
+          } catch (error) {
+            catalogStatus.classList.add("message", "error");
+            catalogStatus.setAttribute("role", "alert");
+            catalogStatus.textContent = error instanceof Error ? error.message : "The listing could not be removed.";
+            remove.disabled = false;
+          }
+        });
+        row.append(photo, details, remove);
+        catalogList.append(row);
+      });
+    }
+
+    async function compressedPhoto(file) {
+      if (!file) return "";
+      if (!/^image\/(?:jpeg|png|webp)$/.test(file.type)) throw new Error("Choose a JPG, PNG, or WebP image.");
+      if (file.size > 10 * 1024 * 1024) throw new Error("Choose an image smaller than 10 MB.");
+      if (typeof createImageBitmap !== "function") throw new Error("This browser cannot compress the selected photo. Try a current browser or add the listing without a photo.");
+      const bitmap = await createImageBitmap(file);
+      try {
+        if (bitmap.width * bitmap.height > 50000000) throw new Error("That image is too large to process. Choose a smaller photo.");
+        const scale = Math.min(1, 1200 / Math.max(bitmap.width, bitmap.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+        canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+        const context = canvas.getContext("2d");
+        if (!context) throw new Error("The browser could not prepare the photo.");
+        context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+        let blob = await new Promise(resolve => canvas.toBlob(resolve, "image/webp", 0.8));
+        if (!blob || blob.type !== "image/webp") blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.82));
+        if (!blob) throw new Error("The browser could not compress the photo.");
+        if (blob.size > 2 * 1024 * 1024) throw new Error("The compressed photo is still over 2 MB. Choose a smaller image.");
+        return await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result));
+          reader.onerror = () => reject(new Error("The compressed photo could not be read."));
+          reader.readAsDataURL(blob);
+        });
+      } finally {
+        bitmap.close();
+      }
+    }
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      setMessage(formSuccess, "");
+      setMessage(formError, "");
+      const data = new FormData(form);
+      const name = String(data.get("name")).trim();
+      const category = String(data.get("category"));
+      const price = Number(data.get("price"));
+      const description = String(data.get("description")).trim();
+      const photo = document.getElementById("item-image").files[0];
+      if (!name || !categories.has(category) || !Number.isSafeInteger(price) || price < 1 || !description) {
+        setMessage(formError, "Enter a name, category, whole-number price, and description.");
+        return;
+      }
+      if (category === "Motorcycles" && !photo) {
+        setMessage(formError, "Add a motorcycle photo before adding this listing.");
+        return;
+      }
+      const submitButton = form.querySelector("button[type=submit]");
+      submitButton.disabled = true;
+      submitButton.textContent = "Uploading listing...";
+      try {
+        const imageData = await compressedPhoto(photo);
+        const response = await fetch("/manage?api=listings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          cache: "no-store",
+          body: JSON.stringify({ name, category, price, description, imageData }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "The listing could not be published.");
+        listings.unshift(result.item);
+        renderCatalog();
+        form.reset();
+        updatePhotoRequirement();
+        updatePhotoSelection();
+        setMessage(formSuccess, "Listing published. It is now visible on the storefront.");
+        catalogStatus.classList.remove("message", "error");
+        catalogStatus.textContent = "Listing saved and published.";
+        updateDraftOverview("Live catalogue", "Changes are saved automatically.");
+      } catch (error) {
+        setMessage(formError, error instanceof Error ? error.message : "The listing could not be added.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Publish listing";
+      }
+    });
+
+    document.getElementById("download-button").addEventListener("click", () => {
+      const file = new Blob([JSON.stringify(listings, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "listings.json";
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      catalogStatus.textContent = "Catalogue backup downloaded.";
+      updateDraftOverview("Live catalogue", "Changes are saved automatically.");
+    });
+
+    fetch("/manage?api=listings", { cache: "no-store" })
+      .then(response => {
+        return response.json().catch(() => ({})).then(result => {
+          if (!response.ok) throw new Error(result.error || "The live catalogue could not be loaded.");
+          return result;
+        });
+      })
+      .then(items => {
+        if (!Array.isArray(items) || !items.every(isListing)) throw new Error("The live catalogue has an invalid format.");
+        const ids = new Set(items.map(item => item.id));
+        if (ids.size !== items.length) throw new Error("The catalogue contains duplicate item IDs.");
+        listings = items;
+        catalogStatus.textContent = "Live catalogue loaded. Changes publish as soon as they are saved.";
+        renderCatalog();
+        updateDraftOverview("Live catalogue", "Changes are saved automatically.");
+      })
+      .catch(error => {
+        listings = [];
+        catalogStatus.classList.add("message", "error");
+        catalogStatus.setAttribute("role", "alert");
+        catalogStatus.textContent = error instanceof Error ? error.message : "The live catalogue could not be loaded.";
+        catalogEmpty.hidden = true;
+        updateDraftOverview("Catalogue unavailable", "Check that Vercel Blob storage is connected.");
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+Student_ID,Student_Name,Department,Age,Score,Attendance_Percent,Fee_Paid,Attendance_Status,Assessment_DateTime
+2001,Amina Yusuf,Computer Science,,,,,Late,
+2002,David Okafor,Physics,20,52.0,97.0,Yes,Late,2026-01-06 11:07:00
+2003,Grace Bello,Engineering,25,46.0,87.0,No,Present,2026-01-07 14:14:00
+2004,Samuel Ade,Mathematics,17,46.0,63.0,Yes,Late,2026-01-08 17:21:00
+2005,Zainab Musa,Statistics,26,38.0,85.0,Yes,Late,2026-01-09 08:28:00
+2006,Daniel James,Computer Science,27,88.0,64.0,No,Late,2026-01-10 11:35:00
+2007,Mary Eze,Physics,21,35.0,98.0,Yes,Late,2026-01-11 14:42:00
+2008,Ibrahim Sani,Engineering,23,78.0,67.0,Yes,Present,2026-01-12 17:49:00
+2009,Esther John,Mathematics,22,48.0,55.0,No,Present,2026-01-13 08:56:00
+2010,Peter Obi,Statistics,22,79.0,88.0,No,Present,2026-01-14 11:03:00
+2011,Fatima Lawal,Computer Science,24,50.0,74.0,Yes,Late,2026-01-15 14:10:00
+2012,John Adewale,Physics,21,81.0,86.0,Yes,Late,2026-01-16 17:17:00
+2013,Ruth Chukwu,Engineering,18,40.0,92.0,Yes,Absent,2026-01-17 08:24:00
+2014,Michael Danjuma,Mathematics,18,,56.0,No,Absent,2026-01-18 11:31:00
+2015,Blessing Ayo,Statistics,24,81.0,60.0,No,Absent,
+2016,Chinedu Okoro,Computer Science,20,69.0,94.0,Yes,Late,2026-01-20 17:45:00
+2017,Halima Garba,Physics,27,56.0,84.0,Yes,Late,2026-01-21 08:52:00
+2018,Tunde Bakare,Statistics,24,83.0,67.0,Yes,Late,2026-01-22 11:59:00
+2019,Ngozi Nwosu,Mathematics,22,42.0,64.0,Yes,Absent,2026-01-23 14:06:00
+2020,Seyi Adebayo,Statistics,23,69.0,54.0,Yes,Late,2026-01-24 17:13:00
+2021,Amina Yusuf,Computer Science,22,62.0,91.0,No,Absent,2026-01-25 08:20:00
+2022,David Okafor,Physics,27,93.0,59.0,No,Present,
+2023,Grace Bello,Engineering,20,68.0,97.0,No,Late,2026-01-27 14:34:00
+2024,Samuel Ade,Mathematics,,81.0,64.0,Yes,Late,2026-01-28 17:41:00
+2025,Zainab Musa,Statistics,24,46.0,98.0,Yes,Present,2026-01-29 08:48:00
+2026,Daniel James,Computer Science,19,55.0,100.0,No,Late,2026-01-30 11:55:00
+2027,Mary Eze,Physics,18,,74.0,No,Late,2026-01-31 14:02:00
+2028,Ibrahim Sani,Engineering,21,36.0,93.0,,Late,2026-02-01 17:09:00
+2029,Esther John,Mathematics,25,69.0,99.0,No,Present,
+2030,Peter Obi,Statistics,21,,60.0,No,Present,2026-02-03 11:23:00
+2031,Fatima Lawal,Computer Science,21,99.0,98.0,Yes,Late,2026-02-04 14:30:00
+2032,John Adewale,Physics,18,73.0,,Yes,Present,2026-02-05 17:37:00
+2033,Ruth Chukwu,Engineering,22,55.0,84.0,Yes,Late,2026-02-06 08:44:00
+2034,Michael Danjuma,Mathematics,22,97.0,51.0,Yes,Absent,2026-02-07 11:51:00
+2035,Blessing Ayo,Computer Science,21,65.0,53.0,Yes,Late,2026-02-08 14:58:00
+2036,Chinedu Okoro,Computer Science,18,45.0,96.0,No,Present,2026-02-09 17:05:00
+2037,Halima Garba,Physics,25,51.0,58.0,No,Late,2026-02-10 08:12:00
+2038,Tunde Bakare,Engineering,19,68.0,83.0,No,Present,2026-02-11 11:19:00
+2039,Ngozi Nwosu,Mathematics,25,60.0,95.0,No,Absent,2026-02-12 14:26:00
+2040,Seyi Adebayo,Statistics,27,,78.0,No,Present,2026-02-13 17:33:00
+2041,Amina Yusuf,Computer Science,20,63.0,54.0,No,Present,2026-02-14 08:40:00
+2042,David Okafor,Physics,26,64.0,87.0,Yes,Present,2026-02-15 11:47:00
+2043,Grace Bello,Engineering,18,42.0,64.0,Yes,Present,
+2044,Samuel Ade,Mathematics,22,44.0,82.0,Yes,Absent,2026-02-17 17:01:00
+2045,Zainab Musa,Statistics,27,97.0,63.0,Yes,Late,2026-02-18 08:08:00
+2046,Daniel James,Computer Science,26,95.0,65.0,No,Absent,2026-01-05 11:15:00
+2047,Mary Eze,Physics,,47.0,56.0,No,Absent,2026-01-06 14:22:00
+2048,Ibrahim Sani,Engineering,23,87.0,79.0,Yes,Late,2026-01-07 17:29:00
+2049,Esther John,Mathematics,27,47.0,53.0,No,Late,2026-01-08 08:36:00
+2050,Peter Obi,Statistics,22,48.0,65.0,Yes,Present,2026-01-09 11:43:00
+2051,Fatima Lawal,Computer Science,25,92.0,58.0,No,Present,2026-01-10 14:50:00
+2052,John Adewale,Statistics,21,94.0,65.0,Yes,Absent,2026-01-11 17:57:00
+2053,Ruth Chukwu,Engineering,25,,53.0,Yes,Present,2026-01-12 08:04:00
+2054,Michael Danjuma,Mathematics,20,56.0,76.0,No,Absent,2026-01-13 11:11:00
+2055,Blessing Ayo,Statistics,20,86.0,53.0,,Absent,2026-01-14 14:18:00
+2056,Chinedu Okoro,Computer Science,17,84.0,66.0,No,Absent,2026-01-15 17:25:00
+2057,Halima Garba,Physics,23,97.0,59.0,Yes,Absent,
+2058,Tunde Bakare,Engineering,20,42.0,87.0,Yes,Late,2026-01-17 11:39:00
+2059,Ngozi Nwosu,Mathematics,22,,53.0,No,Late,2026-01-18 14:46:00
+2060,Seyi Adebayo,Statistics,25,55.0,53.0,Yes,Present,2026-01-19 17:53:00
+2061,Amina Yusuf,Computer Science,18,43.0,93.0,Yes,Absent,2026-01-20 08:00:00
+2062,David Okafor,Physics,18,66.0,87.0,Yes,Late,2026-01-21 11:07:00
+2063,Grace Bello,Engineering,18,88.0,,No,Absent,2026-01-22 14:14:00
+2064,Samuel Ade,Mathematics,20,75.0,65.0,No,Absent,
+2065,Zainab Musa,Statistics,19,73.0,79.0,No,Late,2026-01-24 08:28:00
+2066,Daniel James,Computer Science,17,,89.0,Yes,Present,2026-01-25 11:35:00
+2067,Mary Eze,Physics,25,62.0,82.0,No,Present,2026-01-26 14:42:00
+2068,Ibrahim Sani,Engineering,22,43.0,65.0,No,Absent,2026-01-27 17:49:00
+2069,Esther John,Computer Science,19,91.0,84.0,No,Late,2026-01-28 08:56:00
+2070,Peter Obi,Statistics,,36.0,92.0,No,Late,2026-01-29 11:03:00
+2071,Fatima Lawal,Computer Science,18,52.0,66.0,Yes,Present,
+2072,John Adewale,Physics,25,54.0,67.0,No,Late,2026-01-31 17:17:00
+2073,Ruth Chukwu,Engineering,20,78.0,63.0,No,Late,2026-02-01 08:24:00
+2074,Michael Danjuma,Mathematics,24,67.0,53.0,Yes,Late,2026-02-02 11:31:00
+2075,Blessing Ayo,Statistics,23,70.0,52.0,Yes,Absent,2026-02-03 14:38:00
+2076,Chinedu Okoro,Computer Science,19,68.0,60.0,No,Late,2026-02-04 17:45:00
+2077,Halima Garba,Physics,23,36.0,57.0,Yes,Late,2026-02-05 08:52:00
+2078,Tunde Bakare,Engineering,19,39.0,73.0,Yes,Absent,2026-02-06 11:59:00
+2079,Ngozi Nwosu,Mathematics,19,,69.0,No,Present,2026-02-07 14:06:00
+2080,Seyi Adebayo,Statistics,22,61.0,93.0,Yes,Late,2026-02-08 17:13:00
+2081,Amina Yusuf,Computer Science,18,80.0,99.0,No,Late,2026-02-09 08:20:00
+2082,David Okafor,Physics,19,65.0,60.0,,Absent,2026-02-10 11:27:00
+2083,Grace Bello,Engineering,17,57.0,97.0,No,Absent,2026-02-11 14:34:00
+2084,Samuel Ade,Mathematics,27,66.0,67.0,Yes,Late,2026-02-12 17:41:00
+2085,Zainab Musa,Statistics,18,83.0,52.0,No,Present,
+2086,Daniel James,Statistics,20,93.0,72.0,No,Present,2026-02-14 11:55:00
+2087,Mary Eze,Physics,20,38.0,92.0,Yes,Absent,2026-02-15 14:02:00
+2088,Ibrahim Sani,Engineering,22,,54.0,No,Absent,2026-02-16 17:09:00
+2089,Esther John,Mathematics,27,100.0,75.0,No,Present,2026-02-17 08:16:00
+2090,Peter Obi,Statistics,18,68.0,61.0,No,Present,2026-02-18 11:23:00
+2091,Fatima Lawal,Computer Science,18,90.0,72.0,No,Absent,2026-01-05 14:30:00
+2092,John Adewale,Physics,26,,57.0,No,Late,2026-01-06 17:37:00
+2093,Ruth Chukwu,Engineering,,67.0,52.0,No,Present,2026-01-07 08:44:00
+2094,Michael Danjuma,Mathematics,25,60.0,,No,Present,2026-01-08 11:51:00
+2095,Blessing Ayo,Statistics,27,77.0,89.0,No,Late,2026-01-09 14:58:00
+2096,Chinedu Okoro,Computer Science,18,73.0,82.0,No,Late,2026-01-10 17:05:00
+2097,Halima Garba,Physics,23,76.0,75.0,No,Late,2026-01-11 08:12:00
+2098,Tunde Bakare,Engineering,19,59.0,76.0,No,Late,2026-01-12 11:19:00
+2099,Ngozi Nwosu,Mathematics,19,73.0,75.0,Yes,Absent,
+2100,Seyi Adebayo,Statistics,21,61.0,77.0,No,Absent,2026-01-14 17:33:00
+2101,Amina Yusuf,Computer Science,24,91.0,93.0,Yes,Late,2026-01-15 08:40:00
+2102,David Okafor,Physics,24,56.0,92.0,Yes,Absent,2026-01-16 11:47:00
+2103,Grace Bello,Computer Science,25,77.0,55.0,Yes,Late,2026-01-17 14:54:00
+2104,Samuel Ade,Mathematics,21,63.0,62.0,Yes,Present,2026-01-18 17:01:00
+2105,Zainab Musa,Statistics,17,,80.0,Yes,Absent,2026-01-19 08:08:00
+2106,Daniel James,Computer Science,23,59.0,95.0,No,Absent,
+2107,Mary Eze,Physics,23,66.0,59.0,Yes,Present,2026-01-21 14:22:00
+2108,Ibrahim Sani,Engineering,23,63.0,61.0,No,Present,2026-01-22 17:29:00
+2109,Esther John,Mathematics,25,66.0,57.0,,Present,2026-01-23 08:36:00
+2110,Peter Obi,Statistics,24,75.0,98.0,No,Late,2026-01-24 11:43:00
+2111,Fatima Lawal,Computer Science,25,89.0,85.0,No,Present,2026-01-25 14:50:00
+2112,John Adewale,Physics,24,92.0,66.0,Yes,Late,2026-01-26 17:57:00
+2113,Ruth Chukwu,Engineering,21,97.0,90.0,Yes,Late,
+2114,Michael Danjuma,Mathematics,24,44.0,95.0,No,Present,2026-01-28 11:11:00
+2115,Blessing Ayo,Statistics,21,77.0,70.0,Yes,Present,2026-01-29 14:18:00
+2116,Chinedu Okoro,Computer Science,,64.0,74.0,Yes,Late,2026-01-30 17:25:00
+2117,Halima Garba,Physics,20,,76.0,No,Absent,2026-01-31 08:32:00
+2118,Tunde Bakare,Engineering,25,,76.0,Yes,Present,2026-02-01 11:39:00
+2119,Ngozi Nwosu,Mathematics,23,84.0,99.0,Yes,Late,2026-02-02 14:46:00
+2120,Seyi Adebayo,Statistics,23,96.0,50.0,No,Absent,2026-02-03 17:53:00
